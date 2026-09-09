@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jaga Diri, Jaga Kesihatan — Healty Pro MAX</title>
+<meta name="description" content="Penyertaan pertandingan kreatif antarabangsa oleh Healty Pro MAX — lagu kesihatan kanak-kanak, abstrak inovasi, penjelasan, permainan interaktif dan senarai semak harian.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230A2A31'/%3E%3Cpath d='M50 22 L50 78 M22 50 L78 50' stroke='%23C4453B' stroke-width='16' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  /* =====================================================================
+     FAIL DIPERLUKAN (letakkan dalam folder yang SAMA dengan index.html):
+     1) JAGA_DIRI_JAGA_KESIHATAN.mp4  -> video lagu (sudah disertakan)
+     2) logo.jpeg                       -> logo pasukan Healty Pro MAX
+        (jika logo.png belum ada, laman ini akan papar lambang "HP"
+         gantian secara automatik — tiada apa akan pecah/rosak)
+     ===================================================================== */
+  :root{
+    --paper:#F5F2EC;
+    --white:#FFFFFF;
+    --clinical-blue:#EAF3F2;
+    --navy:#0F3D46;
+    --navy-deep:#0A2A31;
+    --teal:#1B7F79;
+    --teal-deep:#125F5A;
+    --mint:#3FD9A0;
+    --cross-red:#C4453B;
+    --cross-red-deep:#A5332B;
+    --amber:#D98F2B;
+    --ink:#1C2626;
+    --line: rgba(15,61,70,0.14);
+    --shadow: 0 14px 34px rgba(15,61,70,0.10);
+    --cross-tex: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cpath d='M32 22v20M22 32h20' stroke='%23ffffff' stroke-width='2.4' stroke-linecap='round' opacity='0.5'/%3E%3C/svg%3E");
+    --cross-tex-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cpath d='M32 22v20M22 32h20' stroke='%230F3D46' stroke-width='2.2' stroke-linecap='round' opacity='0.07'/%3E%3C/svg%3E");
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Nunito', sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    color:var(--navy);
+    margin:0 0 .4em 0;
+    line-height:1.12;
+    font-weight:600;
+  }
+  p{margin:0 0 1em 0; max-width:64ch;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  video{max-width:100%;display:block;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 28px;}
+  section{position:relative;}
+  ::selection{background:var(--amber);color:var(--navy-deep);}
+  .mono{font-family:'JetBrains Mono', monospace;}
+  button{font-family:inherit;}
+  code{background:rgba(15,61,70,.08); padding:2px 7px; border-radius:5px; font-size:.9em;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+  :focus-visible{outline:3px solid var(--teal); outline-offset:2px;}
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.show{opacity:1; transform:translateY(0);}
+
+  /* ---------- PULSE / LIVE DOT ---------- */
+  .pulse-dot{position:relative; width:9px;height:9px;border-radius:50%; background:var(--mint); display:inline-block; flex-shrink:0;}
+  .pulse-dot::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--mint);opacity:.7;animation:pulse-ring 1.8s ease-out infinite;}
+  @keyframes pulse-ring{0%{transform:scale(.5);opacity:.8;}100%{transform:scale(2.1);opacity:0;}}
+
+  /* ---------- LOGO SLOT (graceful fallback if logo.png missing) ---------- */
+  .logo-slot{display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .logo-fallback{display:none; align-items:center; justify-content:center; font-family:'Fraunces'; font-weight:700; background:var(--cross-red); color:#fff; border-radius:10px;}
+  .logo-slot img{cursor:pointer; transition:transform .2s ease, box-shadow .2s ease;}
+  .logo-slot img:hover{transform:scale(1.07);}
+  .nav .logo-slot img{width:38px;height:38px;border-radius:9px;object-fit:cover;}
+  .nav .logo-fallback{width:38px;height:38px;font-size:.9rem;}
+  .foot-logo-slot img{width:26px;height:26px;border-radius:6px;object-fit:cover;}
+  .foot-logo-slot .logo-fallback{width:26px;height:26px;font-size:.68rem;}
+  .team-logo-slot{
+    width:160px;height:160px;border-radius:26px;background:var(--white);padding:20px;
+    box-shadow:0 18px 40px rgba(0,0,0,.3); margin-bottom:24px; position:relative;
+  }
+  .team-logo-slot img{width:100%;height:100%;object-fit:contain;}
+  .team-logo-slot .logo-fallback{width:100%;height:100%;font-size:2.6rem;border-radius:16px;}
+  .team-logo-slot .zoom-hint{
+    position:absolute; bottom:-10px; right:-10px; width:34px;height:34px;border-radius:50%;
+    background:var(--cross-red); color:#fff; display:flex; align-items:center; justify-content:center;
+    font-size:.9rem; box-shadow:0 6px 14px rgba(0,0,0,.3); pointer-events:none;
+  }
+  @media (max-width:560px){ .team-logo-slot{width:120px;height:120px;padding:16px;} }
+
+  /* ---------- LOGO LIGHTBOX ---------- */
+  .logo-lightbox{
+    position:fixed; inset:0; z-index:999; background:rgba(10,42,49,.88); backdrop-filter:blur(4px);
+    display:none; align-items:center; justify-content:center; padding:30px; cursor:zoom-out;
+  }
+  .logo-lightbox.open{display:flex;}
+  .logo-lightbox-inner{
+    background:#fff; border-radius:20px; padding:30px; max-width:min(560px,90vw); max-height:85vh;
+    display:flex; align-items:center; justify-content:center; box-shadow:0 30px 70px rgba(0,0,0,.5); cursor:default;
+  }
+  .logo-lightbox-inner img{max-width:100%; max-height:70vh; object-fit:contain; display:block;}
+  .logo-lightbox-close{
+    position:absolute; top:26px; right:30px; width:44px;height:44px;border-radius:50%; background:rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.4); color:#fff; font-size:1.3rem; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky; top:0; z-index:100;
+    background:rgba(245,242,236,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1140px;margin:0 auto;padding:12px 28px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces';font-weight:600;color:var(--navy);font-size:1.2rem;white-space:nowrap;}
+  .navlinks{display:flex;gap:26px;flex-wrap:wrap;font-weight:700;font-size:.9rem;align-items:center;}
+  .navlinks a{text-decoration:none;color:var(--navy);opacity:.72;transition:opacity .15s;padding:6px 2px;border-bottom:2px solid transparent;}
+  .navlinks a:hover{opacity:1;border-bottom-color:var(--cross-red);}
+  .navtoggle{display:none;background:none;border:2px solid var(--navy);border-radius:10px;padding:6px 10px;font-size:1.1rem;color:var(--navy);cursor:pointer;}
+  @media (max-width:820px){
+    .navlinks{position:absolute;top:100%;left:0;right:0;background:var(--white);flex-direction:column;gap:0;max-height:0;overflow:hidden;transition:max-height .25s ease;border-bottom:1px solid var(--line);}
+    .navlinks.open{max-height:400px;}
+    .navlinks a{padding:12px 28px;border-bottom:1px solid var(--line);width:100%;}
+    .navtoggle{display:block;}
+  }
+
+  /* ---------- HERO — VIDEO FIRST ---------- */
+  .hero{
+    position:relative; background:var(--navy-deep); color:var(--white); overflow:hidden;
+    min-height:min(88vh, 780px); display:flex; align-items:flex-end;
+  }
+  .hero-video-bg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.5;}
+  .hero-scrim{position:absolute; inset:0; background:linear-gradient(0deg, rgba(10,42,49,.97) 0%, rgba(10,42,49,.6) 42%, rgba(10,42,49,.3) 100%);}
+  .hero-cross-pattern{position:absolute; inset:0; opacity:.4; pointer-events:none; background-image:var(--cross-tex);}
+  .scan-line{
+    position:absolute; inset:0; z-index:2; pointer-events:none; mix-blend-mode:screen;
+    background:linear-gradient(180deg, transparent 0%, rgba(63,217,160,.4) 50%, transparent 100%);
+    background-size:100% 45%; background-repeat:no-repeat; animation:scanmove 6s linear infinite;
+  }
+  @keyframes scanmove{0%{background-position:0 -45%;}100%{background-position:0 145%;}}
+  .float-icon{position:absolute; z-index:1; opacity:.16; filter:grayscale(1) brightness(2); animation:floaty 7s ease-in-out infinite; pointer-events:none;}
+  @keyframes floaty{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-20px) rotate(6deg);}}
+  @media (max-width:700px){ .float-icon{display:none;} }
+  .hero-content{position:relative; z-index:3; padding:64px 0 56px; width:100%;}
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono'; font-size:.76rem;
+    letter-spacing:.02em; color:var(--white); opacity:.92; margin-bottom:20px;
+    border:1px solid rgba(255,255,255,.3); padding:7px 14px; border-radius:999px;
+  }
+  .hero h1{font-size:clamp(2.2rem, 5.2vw, 3.8rem); color:var(--white); max-width:16ch;}
+  .hero h1 em{font-style:normal; color:#8FD4C8;}
+  .hero .lede{font-size:1.14rem; color:rgba(255,255,255,.88); max-width:52ch;}
+  .hero-actions{display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-top:26px;}
+  .play-btn{
+    display:inline-flex; align-items:center; gap:12px; background:var(--white); color:var(--navy-deep);
+    font-family:'Fraunces'; font-weight:600; font-size:1.02rem; padding:14px 24px 14px 16px; border-radius:999px;
+    border:none; cursor:pointer; box-shadow:0 10px 26px rgba(0,0,0,.3); transition:transform .15s;
+  }
+  .play-btn:hover{transform:translateY(-2px);}
+  .play-btn .disc{width:34px;height:34px;border-radius:50%;background:var(--cross-red); display:flex;align-items:center;justify-content:center;color:#fff;font-size:.85rem;flex-shrink:0;}
+  .mute-btn{
+    display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.1); color:#fff;
+    border:1px solid rgba(255,255,255,.35); font-weight:700; font-size:.88rem; padding:11px 18px; border-radius:999px; cursor:pointer;
+  }
+  .hero-meta{display:flex; gap:22px; flex-wrap:wrap; margin-top:30px; font-size:.85rem; color:rgba(255,255,255,.75); font-weight:700;}
+  .hero-meta span{display:flex; align-items:center; gap:7px;}
+
+  /* ---------- SECTION HEADERS ---------- */
+  .kicker{display:flex; align-items:center; gap:10px; margin-bottom:14px; font-family:'JetBrains Mono'; font-size:.78rem; letter-spacing:.01em; color:var(--teal-deep); font-weight:500;}
+  .section-head{max-width:62ch; margin-bottom:42px;}
+  .section-head h2{font-size:clamp(1.7rem,3.4vw,2.5rem);}
+  .section-head .sub{color:var(--ink); opacity:.72; font-size:1.03rem;}
+  .band-cream{background:var(--paper);}
+  .band-white{background:var(--white);}
+  .band-clinical{background:var(--clinical-blue);}
+  .band-navy{background:var(--navy-deep); color:rgba(255,255,255,.92); position:relative;}
+  .band-navy::before{content:'';position:absolute;inset:0;background-image:var(--cross-tex);opacity:.35;pointer-events:none;}
+  .band-navy .wrap{position:relative; z-index:1;}
+  .band-navy h2, .band-navy h3, .band-navy h4{color:var(--white);}
+  section.pad{padding:80px 0;}
+  @media (max-width:700px){ section.pad{padding:54px 0;} }
+
+  /* ---------- ECG DIVIDER (animated) ---------- */
+  .ecg-divider{width:100%; display:block; height:44px; overflow:hidden; position:relative;}
+  .ecg-divider svg{width:100%; height:100%; display:block;}
+  .ecg-divider path{stroke-dasharray:1400; stroke-dashoffset:1400; animation:ecg-draw 3.2s ease-out forwards;}
+  @keyframes ecg-draw{to{stroke-dashoffset:0;}}
+
+  /* ---------- ABSTRACT ---------- */
+  .abstract-card{
+    background:var(--white); border:1px solid var(--line); border-radius:10px; padding:46px 48px;
+    box-shadow:var(--shadow); position:relative;
+  }
+  @media (max-width:640px){ .abstract-card{padding:30px 24px;} }
+  .abstract-card::before{
+    content:''; position:absolute; top:0; left:0; width:5px; height:100%; background:linear-gradient(180deg,var(--cross-red),var(--teal));
+    border-radius:10px 0 0 10px;
+  }
+  .abstract-label{font-family:'JetBrains Mono'; font-size:.75rem; letter-spacing:.06em; color:var(--cross-red); display:flex; align-items:center; gap:10px; margin-bottom:18px;}
+  .abstract-card h2{font-size:clamp(1.5rem,3vw,2rem); margin-bottom:20px;}
+  .abstract-body p{font-size:1.02rem; opacity:.86; max-width:none; text-align:justify;}
+  .abstract-body p:first-of-type::first-letter{
+    font-family:'Fraunces'; font-size:3.4rem; font-weight:600; float:left; line-height:.85; padding-right:10px; padding-top:4px; color:var(--teal-deep);
+  }
+  .abstract-pillars{display:flex; flex-wrap:wrap; gap:10px; margin-top:8px; margin-bottom:24px;}
+  .abstract-pillars span{
+    font-family:'JetBrains Mono'; font-size:.74rem; background:var(--clinical-blue); color:var(--navy);
+    padding:7px 13px; border-radius:999px; border:1px solid var(--line);
+  }
+
+  /* ---------- WHY SONG ---------- */
+  .why-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:4px; overflow:hidden;}
+  @media (max-width:920px){ .why-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .why-grid{grid-template-columns:1fr;} }
+  .why-card{background:var(--white); padding:30px 26px; transition:background .2s;}
+  .why-card:hover{background:var(--clinical-blue);}
+  .why-card .idx{font-family:'JetBrains Mono'; font-size:.78rem; color:var(--cross-red); display:block; margin-bottom:14px;}
+  .why-card h4{font-size:1.08rem; margin-bottom:8px;}
+  .why-card p{font-size:.93rem; opacity:.82; margin:0;}
+
+  /* ---------- VITALS / STATS STRIP ---------- */
+  .vitals-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  @media (max-width:920px){ .vitals-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){ .vitals-grid{grid-template-columns:1fr;} }
+  .vital-card{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.16); border-radius:10px; padding:24px 22px; transition:transform .2s, background .2s;}
+  .vital-card:hover{transform:translateY(-4px); background:rgba(255,255,255,.1);}
+  .vital-top{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;}
+  .vital-icon{font-size:1.3rem;}
+  .vital-num{font-family:'Fraunces'; font-weight:600; font-size:2.1rem; color:var(--mint); line-height:1;}
+  .vital-num .unit{font-family:'JetBrains Mono'; font-size:.95rem; opacity:.8; margin-left:5px;}
+  .vital-label{font-size:.86rem; opacity:.78; margin-top:10px; max-width:none;}
+  .vital-source{font-family:'JetBrains Mono'; font-size:.68rem; opacity:.5; margin-top:12px;}
+
+  /* ---------- VIDEO SECTION ---------- */
+  .video-panel{display:grid; grid-template-columns:1.35fr .9fr; gap:0; border-radius:6px; overflow:hidden; box-shadow:var(--shadow); background:var(--navy-deep); border:1px solid var(--line);}
+  @media (max-width:860px){ .video-panel{grid-template-columns:1fr;} }
+  .video-panel video{width:100%; background:#000; display:block; aspect-ratio:16/9;}
+  .video-info{padding:36px 34px; color:rgba(255,255,255,.92);}
+  .video-info h3{color:var(--white); font-size:1.5rem;}
+  .video-info .meta{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:18px;}
+  .video-info .meta span{font-family:'JetBrains Mono'; font-size:.74rem; border:1px solid rgba(255,255,255,.25); padding:6px 11px; border-radius:999px; opacity:.85;}
+  .video-info p{opacity:.82; font-size:.96rem;}
+  .lyric-tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; border-top:1px solid rgba(255,255,255,.15); padding-top:18px;}
+  .lyric-tags span{font-family:'Fraunces'; font-style:italic; font-size:.86rem; color:#8FD4C8;}
+  .lyric-tags span:not(:last-child)::after{content:"·"; margin-left:10px; color:rgba(255,255,255,.3); font-style:normal;}
+
+  /* ---------- 5 HABITS — VITALS-CHART STYLE ---------- */
+  .habit-list{display:flex; flex-direction:column;}
+  .habit{display:grid; grid-template-columns:88px 1fr; gap:26px; align-items:flex-start; padding:32px 0; border-top:1px solid var(--line); transition:background .2s;}
+  .habit:hover{background:rgba(27,127,121,.04);}
+  .habit:last-child{border-bottom:1px solid var(--line);}
+  @media (max-width:560px){ .habit{grid-template-columns:56px 1fr; gap:18px;} }
+  .habit-icon{width:88px; height:88px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--clinical-blue); border:1.5px solid var(--line); flex-shrink:0; transition:all .25s;}
+  .habit:hover .habit-icon{background:var(--teal); border-color:var(--teal);}
+  .habit:hover .habit-icon svg{stroke:#fff;}
+  @media (max-width:560px){ .habit-icon{width:56px;height:56px;} }
+  .habit-icon svg{width:40px;height:40px; transition:stroke .25s;}
+  @media (max-width:560px){ .habit-icon svg{width:26px;height:26px;} }
+  .habit-label{font-family:'JetBrains Mono'; font-size:.74rem; color:var(--teal-deep); display:block; margin-bottom:6px;}
+  .habit h3{font-size:1.3rem; margin-bottom:8px;}
+  .habit .fact{display:flex; align-items:flex-start; gap:9px; margin-top:14px; font-size:.88rem; font-weight:700; color:var(--navy); background:var(--clinical-blue); padding:11px 15px; border-radius:4px; border-left:3px solid var(--teal); max-width:none;}
+  .habit p{font-size:.98rem; opacity:.85; margin-bottom:6px;}
+
+  /* ---------- GAMES ---------- */
+  .game-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
+  @media (max-width:920px){ .game-grid{grid-template-columns:1fr;} }
+  .game-card{background:var(--white); padding:34px; display:flex; flex-direction:column;}
+  .game-card h3{font-size:1.35rem;}
+  .game-card .tag{align-self:flex-start; font-family:'JetBrains Mono'; font-size:.72rem; color:var(--cross-red); border:1px solid var(--cross-red); padding:5px 11px; border-radius:999px; margin-bottom:14px; display:flex; align-items:center; gap:7px;}
+  .game-card.quiz .tag{color:var(--teal-deep); border-color:var(--teal-deep);}
+
+  .wash-stage{display:flex; flex-direction:column; align-items:center; gap:18px; padding:14px 0 6px;}
+  .ring-wrap{position:relative; width:172px; height:172px;}
+  .ring-wrap svg{transform:rotate(-90deg); width:172px; height:172px;}
+  .ring-bg{fill:none; stroke:var(--clinical-blue); stroke-width:12;}
+  .ring-progress{fill:none; stroke:var(--teal); stroke-width:12; stroke-linecap:round; transition:stroke-dashoffset .25s linear;}
+  .ring-center{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;}
+  .ring-center .num{font-family:'Fraunces'; font-size:2.3rem; font-weight:600; color:var(--navy);}
+  .ring-center .lbl{font-family:'JetBrains Mono'; font-size:.68rem; opacity:.55;}
+  .wash-step{font-family:'Fraunces'; font-weight:600; text-align:center; font-size:1.08rem; color:var(--navy); min-height:1.6em;}
+  .wash-steps-list{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:4px;}
+  .wash-steps-list span{font-size:.74rem; font-weight:700; padding:6px 10px; border-radius:999px; background:var(--paper); color:var(--navy); border:1px solid var(--line); opacity:.5; transition:all .2s;}
+  .wash-steps-list span.active{opacity:1; background:var(--teal); color:var(--white); border-color:var(--teal); transform:scale(1.05);}
+  .wash-steps-list span.done{opacity:1; background:var(--navy); color:var(--white); border-color:var(--navy);}
+  .wash-msg{text-align:center; font-weight:800; color:var(--cross-red-deep); min-height:1.4em; font-size:.95rem;}
+  .game-actions{display:flex; gap:10px; justify-content:center; margin-top:10px;}
+  .btn-sm{font-family:'Fraunces'; font-weight:600; border-radius:999px; padding:11px 22px; border:1.5px solid var(--navy); background:var(--navy); color:var(--white); cursor:pointer; font-size:.92rem; transition:transform .15s;}
+  .btn-sm:hover{transform:translateY(-2px);}
+  .btn-sm.secondary{background:transparent; color:var(--navy);}
+
+  .quiz-body{flex:1; display:flex; flex-direction:column;}
+  .quiz-progress{display:flex; gap:6px; margin-bottom:20px;}
+  .quiz-progress i{flex:1; height:4px; border-radius:4px; background:var(--clinical-blue); display:block;}
+  .quiz-progress i.done{background:var(--cross-red);}
+  .quiz-q{font-family:'Fraunces'; font-weight:600; color:var(--navy); font-size:1.12rem; min-height:2.6em;}
+  .quiz-opts{display:flex; flex-direction:column; gap:10px; margin:14px 0;}
+  .quiz-opt{text-align:left; padding:12px 16px; border-radius:6px; border:1.5px solid var(--line); background:var(--paper); cursor:pointer; font-family:'Nunito'; font-weight:700; font-size:.94rem; color:var(--ink); transition:all .15s; max-width:none;}
+  .quiz-opt:hover{border-color:var(--teal);}
+  .quiz-opt.correct{background:#E4F3EA; border-color:#2E9E5B; color:#1C7A43;}
+  .quiz-opt.wrong{background:#FBE9E7; border-color:var(--cross-red); color:var(--cross-red-deep);}
+  .quiz-opt[disabled]{cursor:default;}
+  .quiz-feedback{font-size:.86rem; font-weight:700; min-height:1.4em; color:var(--teal-deep);}
+  .quiz-result{display:none; text-align:center; padding:20px 0;}
+  .quiz-result .score{font-family:'Fraunces'; font-size:2.6rem; color:var(--cross-red); font-weight:600;}
+  .quiz-result p{font-weight:700; color:var(--navy); margin-left:auto; margin-right:auto;}
+
+  /* ---------- ABOUT / TEAM ---------- */
+  .about-grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:48px; align-items:center;}
+  @media (max-width:860px){ .about-grid{grid-template-columns:1fr;} }
+  .team-card{background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.16); border-radius:10px; padding:36px;}
+  .team-members{margin-top:22px; padding-top:20px; border-top:1px solid rgba(255,255,255,.16);}
+  .team-members-label{font-size:.72rem; letter-spacing:.05em; color:#8FD4C8; display:block; margin-bottom:12px;}
+  .team-members-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+  .team-members-list li{display:flex; align-items:center; gap:10px; font-size:.92rem; font-weight:700; color:#fff; opacity:.92;}
+  .team-members-list li .chk{flex-shrink:0; width:20px;height:20px;border-radius:50%; border:1.5px solid #8FD4C8; color:#8FD4C8; font-size:.66rem; display:flex;align-items:center;justify-content:center;}
+  .about-points{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:16px;}
+  .about-points li{display:flex; gap:14px; align-items:flex-start; font-size:.98rem; opacity:.9;}
+  .about-points li .chk{flex-shrink:0; width:22px;height:22px;border-radius:50%; border:1.5px solid #8FD4C8; color:#8FD4C8; font-size:.72rem; display:flex;align-items:center;justify-content:center; margin-top:2px;}
+
+  /* ---------- REFERENCES / CERTIFICATION STRIP ---------- */
+  .ref-strip{display:flex; align-items:center; gap:20px; flex-wrap:wrap; border:1px solid var(--line); border-radius:6px; padding:22px 26px; background:var(--white);}
+  .ref-seal{
+    flex-shrink:0; width:64px; height:64px; border-radius:50%; border:2px dashed var(--teal); display:flex; align-items:center;
+    justify-content:center; text-align:center; font-family:'JetBrains Mono'; font-size:.58rem; color:var(--teal-deep); font-weight:600;
+    transform:rotate(-8deg); line-height:1.2; padding:4px;
+  }
+  .ref-list{display:flex; flex-wrap:wrap; gap:10px 22px; font-size:.82rem;}
+  .ref-list span{color:var(--navy); font-weight:700; opacity:.8;}
+  .ref-list span::before{content:"—"; margin-right:8px; color:var(--cross-red); opacity:.7;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy-deep); color:rgba(255,255,255,.6); padding:38px 0; font-size:.85rem;}
+  .foot-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;}
+  .foot-brand{display:flex; align-items:center; gap:10px; font-family:'Fraunces'; color:#fff; font-weight:600;}
+
+  /* ---------- FLOATING DAILY CHECKLIST WIDGET ---------- */
+  .fab{
+    position:fixed; bottom:22px; right:22px; z-index:80; width:58px; height:58px; border-radius:50%;
+    background:var(--cross-red); color:#fff; border:none; box-shadow:0 12px 26px rgba(196,69,59,.4);
+    font-size:1.4rem; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  .fab .fab-dot{position:absolute; top:6px; right:6px; width:11px;height:11px;border-radius:50%; background:var(--amber); border:2px solid #fff; display:none;}
+  .fab .fab-dot.show{display:block;}
+  .checklist-panel{
+    position:fixed; bottom:92px; right:22px; z-index:81; width:300px; max-width:88vw;
+    background:var(--white); border-radius:14px; box-shadow:0 24px 60px rgba(15,61,70,.28);
+    padding:22px; transform:translateY(16px) scale(.96); opacity:0; pointer-events:none; transition:all .2s ease;
+    border:1px solid var(--line);
+  }
+  .checklist-panel.open{transform:translateY(0) scale(1); opacity:1; pointer-events:auto;}
+  .checklist-panel h4{font-size:1.02rem; margin-bottom:2px;}
+  .checklist-panel .cl-sub{font-size:.76rem; opacity:.6; margin-bottom:14px;}
+  .cl-progress-track{height:7px; background:var(--paper); border-radius:999px; overflow:hidden; margin-bottom:16px;}
+  .cl-progress-fill{height:100%; background:var(--teal); width:0%; transition:width .25s ease;}
+  .cl-items{display:flex; flex-direction:column; gap:8px;}
+  .cl-item{display:flex; align-items:center; gap:10px; font-size:.86rem; font-weight:700; color:var(--ink); cursor:pointer; padding:8px 10px; border-radius:8px; transition:background .15s;}
+  .cl-item:hover{background:var(--clinical-blue);}
+  .cl-item input{width:18px;height:18px; accent-color:var(--teal); cursor:pointer;}
+  .cl-item.checked span{text-decoration:line-through; opacity:.5;}
+  .cl-close{position:absolute; top:14px; right:16px; background:none; border:none; font-size:1.1rem; color:var(--navy); opacity:.5; cursor:pointer;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <span class="logo-slot">
+        <img src="logo.jpeg" alt="Logo Healty Pro MAX" onclick="openLogoLightbox()" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <span class="logo-fallback">HP</span>
+      </span>
+      Healty Pro MAX
+    </div>
+    <button class="navtoggle" aria-label="Buka menu" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
+    <div class="navlinks" id="navlinks">
+      <a href="#abstrak">Abstrak</a>
+      <a href="#kenapa-lagu">Kenapa Lagu</a>
+      <a href="#video">Video</a>
+      <a href="#amalan">5 Amalan Sihat</a>
+      <a href="#main">Main &amp; Belajar</a>
+      <a href="#tentang">Tentang Kami</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO — VIDEO IS THE FIRST THING SEEN -->
+<section class="hero">
+  <video class="hero-video-bg" id="heroVideo" src="JAGA_DIRI_JAGA_KESIHATAN.mp4" autoplay muted loop playsinline></video>
+  <div class="hero-scrim"></div>
+  <div class="hero-cross-pattern"></div>
+  <div class="scan-line"></div>
+  <span class="float-icon" style="top:14%; left:8%; font-size:3.2rem;">🩺</span>
+  <span class="float-icon" style="top:60%; left:5%; font-size:2.4rem; animation-delay:1.5s;">💊</span>
+  <span class="float-icon" style="top:20%; right:9%; font-size:2.8rem; animation-delay:.8s;">❤️</span>
+  <span class="float-icon" style="top:66%; right:7%; font-size:2.2rem; animation-delay:2.2s;">🧬</span>
+
+  <div class="hero-content">
+    <div class="wrap">
+      <div class="hero-eyebrow">
+        <span class="pulse-dot"></span>
+        Tidak kira apa jua, kesihatan diutamakan dahulu
+      </div>
+      <h1>Jaga Diri,<br><em>Jaga Kesihatan</em></h1>
+      <p class="lede">Satu lagu pendek, lima amalan sihat yang mudah diingati — dicipta untuk membantu kanak-kanak belajar menjaga kebersihan dan kesihatan diri sambil bernyanyi dan bergerak.</p>
+      <div class="hero-actions">
+        <button class="play-btn" id="heroPlayBtn"><span class="disc">▶</span> Tonton video penuh</button>
+        <button class="mute-btn" id="heroMuteBtn">🔇 Hidupkan bunyi pratonton</button>
+      </div>
+      <div class="hero-meta">
+        <span>⏱ ± 3 minit</span>
+        <span>✚ Lagu &amp; visual asli</span>
+        <span>👶 Untuk kanak-kanak</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABSTRACT -->
+<section class="pad band-cream" id="abstrak">
+  <div class="wrap">
+    <div class="abstract-card reveal">
+      <div class="abstract-label"><span class="pulse-dot" style="background:var(--cross-red);"></span><span style="color:var(--cross-red);">✚</span> ABSTRAK INOVASI</div>
+      <h2>Jaga Diri, Jaga Kesihatan</h2>
+      <div class="abstract-pillars">
+        <span>🧼 Kebersihan Diri</span>
+        <span>🥗 Pemakanan Seimbang</span>
+        <span>🏃 Aktiviti Fizikal</span>
+        <span>😴 Tidur Mencukupi</span>
+        <span>💧 Air Secukupnya</span>
+      </div>
+      <div class="abstract-body">
+        <p><em>Jaga Diri, Jaga Kesihatan</em> merupakan satu inovasi pendidikan kesihatan digital yang dibangunkan oleh <strong>Healty Pro MAX</strong> bagi membantu kanak-kanak memahami dan mengamalkan gaya hidup sihat melalui pendekatan yang kreatif, interaktif dan menyeronokkan.</p>
+        <p>Inovasi ini tercetus daripada keperluan untuk menyampaikan pendidikan kesihatan kepada kanak-kanak dalam bentuk yang lebih dekat dengan minat dan tahap tumpuan mereka. Produk ini menggabungkan lagu, video, visual digital, laman web interaktif, permainan dan kuiz dalam satu platform pembelajaran.</p>
+        <p>Lagu bertemakan kesihatan digunakan sebagai medium utama untuk memperkenalkan lima amalan sihat harian, iaitu kebersihan diri, pemakanan seimbang, aktiviti fizikal, tidur yang mencukupi dan pengambilan air yang secukupnya. Penggunaan melodi, irama dan pengulangan bertujuan membantu murid mengingati mesej kesihatan dengan lebih mudah serta menggalakkan pembentukan tabiat melalui pengulangan dalam kehidupan seharian.</p>
+        <p>Sebagai pengukuhan pembelajaran, laman web ini menyediakan <strong>Cabaran 20 Saat Gosok Tangan</strong> dan <strong>Kuiz Amalan Sihat</strong> yang membolehkan kanak-kanak belajar secara aktif melalui aktiviti digital. Kandungan kesihatan turut dirangka berdasarkan garis panduan dan sumber kesihatan yang diiktiraf seperti WHO, CDC dan American Academy of Sleep Medicine, bagi memastikan maklumat yang disampaikan lebih tepat dan boleh dipercayai.</p>
+        <p>Inovasi ini bukan sekadar menghasilkan bahan hiburan, tetapi mengintegrasikan muzik, teknologi digital dan pembelajaran berasaskan permainan untuk menjadikan pendidikan kesihatan lebih menarik, mudah difahami dan mudah diingati. Melalui pendekatan ini, kanak-kanak bukan sahaja mengetahui kepentingan menjaga kesihatan, malah digalakkan untuk mempraktikkan amalan sihat secara konsisten di rumah dan di sekolah.</p>
+        <p>Secara keseluruhannya, <em>Jaga Diri, Jaga Kesihatan</em> berpotensi menjadi satu pendekatan pembelajaran kesihatan yang kreatif, mesra kanak-kanak dan relevan dengan pendidikan digital masa kini.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY A SONG -->
+<section class="pad band-white" id="kenapa-lagu">
+  <div class="wrap">
+    <div class="kicker reveal">01 — PENDEKATAN KAMI</div>
+    <div class="section-head reveal">
+      <h2>Sebab lagu melekat di kepala — dan itu satu kelebihan</h2>
+      <p class="sub">Kami sengaja mencipta mesej kesihatan dalam bentuk lagu pendek dan berirama, bukan syarahan panjang. Ini sebabnya ia berkesan, terutamanya untuk kanak-kanak.</p>
+    </div>
+    <div class="why-grid reveal">
+      <div class="why-card">
+        <span class="idx">A</span>
+        <h4>Melodi bantu ingatan</h4>
+        <p>Rentak, rima dan pengulangan memudahkan otak menyimpan maklumat baharu — sebab itu kanak-kanak lebih mudah ingat lirik lagu berbanding arahan biasa.</p>
+      </div>
+      <div class="why-card">
+        <span class="idx">B</span>
+        <h4>Belajar rasa seronok</h4>
+        <p>Mesej kesihatan sering terasa seperti teguran. Dengan lagu, kanak-kanak belajar tanpa rasa dimarahi — mereka menyanyi dan bergerak, bukan sekadar mendengar nasihat.</p>
+      </div>
+      <div class="why-card">
+        <span class="idx">C</span>
+        <h4>Pengulangan bina tabiat</h4>
+        <p>Lagu senang dinyanyi berulang kali — semasa cuci tangan, semasa bersiap tidur. Pengulangan harian inilah yang menukar pengetahuan kepada tabiat sebenar.</p>
+      </div>
+      <div class="why-card">
+        <span class="idx">D</span>
+        <h4>Sesuai jangka tumpuan</h4>
+        <p>Kanak-kanak lebih mudah kekal fokus pada video pendek berirama berbanding teks panjang — sejajar dengan cara kami mereka bentuk laman ini.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ecg-divider band-white">
+  <svg viewBox="0 0 1200 44" preserveAspectRatio="none"><path d="M0 22 H420 L450 22 L465 6 L480 38 L495 22 L520 22 L535 30 L550 22 H1200" fill="none" stroke="#1B7F79" stroke-width="2" opacity="0.6"/></svg>
+</div>
+
+<!-- VITALS / STATS -->
+<section class="pad band-navy" id="vitals">
+  <div class="wrap">
+    <div class="kicker reveal" style="color:#8FD4C8;"><span class="pulse-dot"></span> DISOKONG DATA KESIHATAN</div>
+    <div class="section-head reveal">
+      <h2>Bukan sekadar lagu — disokong garis panduan sebenar</h2>
+      <p class="sub" style="color:rgba(255,255,255,.72);">Setiap rangkap dalam lagu kami dibina berdasarkan cadangan rasmi badan kesihatan, bukan andaian semata-mata.</p>
+    </div>
+    <div class="vitals-grid reveal">
+      <div class="vital-card">
+        <div class="vital-top"><span class="vital-icon">🏃</span></div>
+        <div class="vital-num"><span class="count" data-target="60">0</span><span class="unit">min</span></div>
+        <p class="vital-label">aktiviti fizikal sederhana–kuat disyorkan setiap hari untuk kanak-kanak &amp; remaja.</p>
+        <div class="vital-source">SUMBER: WHO</div>
+      </div>
+      <div class="vital-card">
+        <div class="vital-top"><span class="vital-icon">🧼</span></div>
+        <div class="vital-num"><span class="count" data-target="20">0</span><span class="unit">saat</span></div>
+        <p class="vital-label">masa minimum cuci tangan dengan sabun &amp; air untuk singkirkan kuman.</p>
+        <div class="vital-source">SUMBER: WHO / CDC</div>
+      </div>
+      <div class="vital-card">
+        <div class="vital-top"><span class="vital-icon">😴</span></div>
+        <div class="vital-num">9<span class="unit">–12 jam</span></div>
+        <p class="vital-label">tidur disyorkan setiap malam untuk kanak-kanak umur 6–12 tahun.</p>
+        <div class="vital-source">SUMBER: AASM</div>
+      </div>
+      <div class="vital-card">
+        <div class="vital-top"><span class="vital-icon">💧</span></div>
+        <div class="vital-num"><span class="count" data-target="8">0</span><span class="unit">gelas</span></div>
+        <p class="vital-label">air disasarkan sehari — lebih lagi semasa cuaca panas atau selepas bersukan.</p>
+        <div class="vital-source">SUMBER: PANDUAN PEMAKANAN</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="pad band-clinical" id="video">
+  <div class="wrap">
+    <div class="kicker reveal">02 — VIDEO PENYERTAAN</div>
+    <div class="section-head reveal">
+      <h2>Tonton Lagu "Jaga Diri, Jaga Kesihatan"</h2>
+      <p class="sub">Video asal ciptaan Healty Pro MAX — lagu pendek yang menceritakan lima amalan sihat harian melalui watak dan situasi seharian kanak-kanak.</p>
+    </div>
+    <div class="video-panel reveal">
+      <video controls preload="metadata" id="mainVideo" src="JAGA_DIRI_JAGA_KESIHATAN.mp4"></video>
+      <div class="video-info">
+        <h3>Jaga Diri, Jaga Kesihatan</h3>
+        <div class="meta"><span>± 3 MINIT</span><span>LAGU &amp; VISUAL ASLI</span><span>UNTUK KANAK-KANAK</span></div>
+        <p>Video ini mengikuti watak-watak kecil yang menunjukkan cara mencuci tangan, makan seimbang, bergerak aktif, tidur cukup dan minum air — semuanya dibungkus dalam satu lagu yang mudah dinyanyi semula.</p>
+        <div class="lyric-tags">
+          <span>"Gosok, gosok..."</span>
+          <span>"Bye kuman atas..."</span>
+          <span>"Jauh, COVID"</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 HABITS -->
+<section class="pad band-white" id="amalan">
+  <div class="wrap">
+    <div class="kicker reveal">03 — TERAS KANDUNGAN LAGU</div>
+    <div class="section-head reveal">
+      <h2>5 amalan sihat setiap hari</h2>
+      <p class="sub">Setiap rangkap dalam lagu kami mewakili satu amalan. Berikut penjelasan penuh setiap satu, disokong garis panduan kesihatan yang diiktiraf.</p>
+    </div>
+    <div class="habit-list">
+      <div class="habit reveal">
+        <div class="habit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1B7F79" stroke-width="1.6"><path d="M7 11V7a5 5 0 0110 0v4"/><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M12 15v2"/></svg></div>
+        <div>
+          <span class="habit-label">AMALAN 01</span>
+          <h3>Kebersihan diri</h3>
+          <p>Cuci tangan dengan sabun sebelum makan, selepas dari tandas, dan selepas bermain di luar. Gosok tapak, belakang tangan, celah jari dan ibu jari — jangan lupa kuku.</p>
+          <p>Gosok gigi sekurang-kurangnya dua kali sehari untuk mengelakkan kerosakan gigi dan bau mulut.</p>
+          <div class="fact">✚ Basuh tangan sekurang-kurangnya 20 saat dengan sabun &amp; air — panduan yang digunakan pakar kesihatan di seluruh dunia.</div>
+        </div>
+      </div>
+      <div class="habit reveal">
+        <div class="habit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1B7F79" stroke-width="1.6"><path d="M4 12a8 8 0 0016 0z"/><path d="M12 12V3"/><path d="M9 3c0 2 1.5 3 3 3s3-1 3-3"/></svg></div>
+        <div>
+          <span class="habit-label">AMALAN 02</span>
+          <h3>Pemakanan seimbang</h3>
+          <p>Isi pinggan dengan sayur-sayuran, buah-buahan, sumber protein (ikan, telur, ayam, kekacang) dan bijirin penuh. Jangan lupa sarapan — ia bekalkan tenaga untuk fokus belajar dan bermain.</p>
+          <p>Kurangkan snek manis, minuman bergula dan makanan terlalu masin secara berlebihan.</p>
+          <div class="fact">✚ Pinggan sihat = separuh sayur &amp; buah, selebihnya protein dan bijirin penuh.</div>
+        </div>
+      </div>
+      <div class="habit reveal">
+        <div class="habit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1B7F79" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+        <div>
+          <span class="habit-label">AMALAN 03</span>
+          <h3>Aktiviti fizikal</h3>
+          <p>Bergerak setiap hari — berlari, berbasikal, menari atau bermain di taman — membantu jantung, otot dan minda kekal cergas serta membina tulang yang kuat.</p>
+          <div class="fact">✚ WHO mengesyorkan sekurang-kurangnya 60 minit aktiviti fizikal sederhana hingga kuat setiap hari untuk kanak-kanak &amp; remaja.</div>
+        </div>
+      </div>
+      <div class="habit reveal">
+        <div class="habit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1B7F79" stroke-width="1.6"><path d="M12 3s6 6.5 6 11a6 6 0 01-12 0c0-4.5 6-11 6-11z"/></svg></div>
+        <div>
+          <span class="habit-label">AMALAN 04</span>
+          <h3>Tidur yang cukup</h3>
+          <p>Rehat malam yang cukup membantu badan pulih, otak menyimpan maklumat yang dipelajari pada siang hari, dan mood kekal stabil pada keesokan hari.</p>
+          <div class="fact">✚ Kanak-kanak umur 6–12 tahun disyorkan tidur 9–12 jam setiap malam (Akademi Perubatan Tidur Amerika).</div>
+        </div>
+      </div>
+      <div class="habit reveal">
+        <div class="habit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1B7F79" stroke-width="1.6"><path d="M12 21c-4-4-7-7.5-7-11a7 7 0 0114 0c0 3.5-3 7-7 11z"/></svg></div>
+        <div>
+          <span class="habit-label">AMALAN 05</span>
+          <h3>Minum air secukupnya</h3>
+          <p>Air membantu badan berfungsi dengan baik — menyokong tumpuan, tenaga dan kecergasan. Minum lebih banyak air selepas bergerak aktif atau bersukan, dan elakkan minuman bergula sebagai pengganti air.</p>
+          <div class="fact">✚ Sasarkan lebih kurang 6–8 gelas air sehari, dan tambah semasa cuaca panas atau selepas bersukan.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ecg-divider band-cream">
+  <svg viewBox="0 0 1200 44" preserveAspectRatio="none"><path d="M0 22 H420 L450 22 L465 6 L480 38 L495 22 L520 22 L535 30 L550 22 H1200" fill="none" stroke="#C4453B" stroke-width="2" opacity="0.55"/></svg>
+</div>
+
+<!-- GAMES -->
+<section class="pad band-cream" id="main">
+  <div class="wrap">
+    <div class="kicker reveal">04 — SUDUT INTERAKTIF</div>
+    <div class="section-head reveal">
+      <h2>Main &amp; belajar</h2>
+      <p class="sub">Dua permainan ringkas untuk kuatkan lagi apa yang dipelajari dari lagu — cuba cabaran cuci tangan, kemudian uji pengetahuan dalam kuiz!</p>
+    </div>
+    <div class="game-grid reveal">
+      <div class="game-card">
+        <span class="tag"><span class="pulse-dot" style="background:var(--cross-red);"></span>PERMAINAN 1</span>
+        <h3>Cabaran 20 saat gosok tangan</h3>
+        <p style="opacity:.7;font-size:.92rem;">Tekan mula dan ikut setiap langkah sehingga genap 20 saat — sama seperti dalam lagu!</p>
+        <div class="wash-stage">
+          <div class="ring-wrap">
+            <svg viewBox="0 0 172 172">
+              <circle class="ring-bg" cx="86" cy="86" r="76"></circle>
+              <circle class="ring-progress" id="ringProgress" cx="86" cy="86" r="76" stroke-dasharray="477.5" stroke-dashoffset="477.5"></circle>
+            </svg>
+            <div class="ring-center"><span class="num" id="washNum">20</span><span class="lbl">SAAT</span></div>
+          </div>
+          <div class="wash-step" id="washStepLabel">Sedia untuk mula? 🧼</div>
+          <div class="wash-steps-list" id="washStepsList">
+            <span data-i="0">Basah &amp; sabun</span>
+            <span data-i="1">Tapak &amp; belakang</span>
+            <span data-i="2">Celah jari</span>
+            <span data-i="3">Ibu jari &amp; pergelangan</span>
+            <span data-i="4">Bilas &amp; lap kering</span>
+          </div>
+          <div class="wash-msg" id="washMsg"></div>
+          <div class="game-actions">
+            <button class="btn-sm" id="washStart">▶ Mula cabaran</button>
+            <button class="btn-sm secondary" id="washReset">↺ Set semula</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card quiz">
+        <span class="tag"><span class="pulse-dot" style="background:var(--teal);"></span>PERMAINAN 2</span>
+        <h3>Kuiz amalan sihat</h3>
+        <p style="opacity:.7;font-size:.92rem;">5 soalan pantas — berapa banyak yang kamu tahu tentang menjaga diri?</p>
+        <div class="quiz-body">
+          <div class="quiz-progress" id="quizProgress"></div>
+          <div id="quizArea">
+            <div class="quiz-q" id="quizQ"></div>
+            <div class="quiz-opts" id="quizOpts"></div>
+            <div class="quiz-feedback" id="quizFeedback"></div>
+          </div>
+          <div class="quiz-result" id="quizResult">
+            <div class="score" id="quizScore">0/5</div>
+            <p id="quizVerdict"></p>
+            <button class="btn-sm" id="quizAgain">↺ Main semula</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / TEAM -->
+<section class="pad band-navy" id="tentang">
+  <div class="wrap about-grid">
+    <div class="team-card reveal">
+      <div class="logo-slot team-logo-slot">
+        <img src="logo.jpeg" alt="Logo Healty Pro MAX" onclick="openLogoLightbox()" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <span class="logo-fallback">HP</span>
+        <span class="zoom-hint">🔍</span>
+      </div>
+      <h3 style="margin-bottom:6px;">Healty Pro MAX</h3>
+      <p style="opacity:.75;font-size:.95rem;">Pasukan penyertaan pertandingan kreatif antarabangsa ini, yang menggabungkan muzik, visual dan reka bentuk web untuk menyampaikan mesej kesihatan kepada kanak-kanak dengan cara yang menyeronokkan.</p>
+      <div class="team-members">
+        <span class="team-members-label mono">👥 AHLI PASUKAN</span>
+        <ul class="team-members-list">
+          <li><span class="chk">✓</span>Ariel Kong Sze Mun</li>
+          <li><span class="chk">✓</span>Ivy Ling Ing Siew</li>
+          <li><span class="chk">✓</span>Annyie Thien</li>
+        </ul>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="kicker" style="color:#8FD4C8;">05 — TENTANG PENYERTAAN KAMI</div>
+      <h2>Kesihatan bermula dengan tabiat kecil, setiap hari</h2>
+      <p style="opacity:.8;margin-bottom:22px;">Kami membina video lagu ini dan laman web pengiring supaya penonton dapat memahami bukan sahaja "apa" yang kami cipta, tetapi "mengapa" kami memilih pendekatan ini.</p>
+      <ul class="about-points">
+        <li><span class="chk">✓</span><span>Sasaran utama: kanak-kanak, dengan bahasa dan visual yang mesra usia mereka.</span></li>
+        <li><span class="chk">✓</span><span>Kandungan kesihatan disemak berdasarkan garis panduan yang diiktiraf (WHO &amp; Akademi Perubatan Tidur Amerika) supaya kekal tepat dan boleh dipercayai.</span></li>
+        <li><span class="chk">✓</span><span>Lagu direka supaya mudah dinyanyi semula di rumah dan di sekolah — matlamat kami bukan sekadar ditonton sekali, tetapi diingati.</span></li>
+        <li><span class="chk">✓</span><span>Laman web ini melengkapkan video dengan abstrak, statistik, permainan dan senarai semak harian supaya pembelajaran diteruskan selepas lagu tamat.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCES -->
+<section class="pad band-cream" style="padding-top:48px;padding-bottom:48px;">
+  <div class="wrap">
+    <div class="ref-strip reveal">
+      <div class="ref-seal">DISEMAK<br>RUJUKAN<br>RASMI</div>
+      <div class="ref-list">
+        <span>Pertubuhan Kesihatan Sedunia (WHO) — Aktiviti Fizikal</span>
+        <span>WHO / CDC — Panduan Kebersihan Tangan</span>
+        <span>American Academy of Sleep Medicine — Tidur Kanak-kanak</span>
+        <span>Garis Panduan Pemakanan Kanak-kanak</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <div class="foot-brand">
+      <span class="logo-slot foot-logo-slot">
+        <img src="logo.jpeg" alt="Logo Healty Pro MAX" onclick="openLogoLightbox()" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <span class="logo-fallback">HP</span>
+      </span>
+      Healty Pro MAX
+    </div>
+    <div>Jaga Diri, Jaga Kesihatan · Penyertaan Pertandingan Kreatif Antarabangsa</div>
+  </div>
+</footer>
+
+<!-- LOGO LIGHTBOX -->
+<div class="logo-lightbox" id="logoLightbox" onclick="closeLogoLightbox(event)">
+  <button class="logo-lightbox-close" onclick="closeLogoLightbox(event)" aria-label="Tutup">✕</button>
+  <div class="logo-lightbox-inner" onclick="event.stopPropagation()">
+    <img src="logo.jpeg" alt="Logo Healty Pro MAX (besar)">
+  </div>
+</div>
+
+<!-- FLOATING DAILY CHECKLIST -->
+<button class="fab" id="fabBtn" aria-label="Buka senarai semak harian">✚<span class="fab-dot" id="fabDot"></span></button>
+<div class="checklist-panel" id="checklistPanel">
+  <button class="cl-close" id="clClose" aria-label="Tutup">✕</button>
+  <h4>Senarai Semak Harian</h4>
+  <p class="cl-sub">Tanda amalan sihat yang kamu dah buat hari ini.</p>
+  <div class="cl-progress-track"><div class="cl-progress-fill" id="clProgressFill"></div></div>
+  <div class="cl-items" id="clItems"></div>
+</div>
+
+<script>
+  // ---- Logo lightbox (click logo to enlarge) ----
+  function openLogoLightbox(){
+    document.getElementById('logoLightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLogoLightbox(e){
+    if(e) e.stopPropagation();
+    document.getElementById('logoLightbox').classList.remove('open');
+    document.body.style.overflow = 'auto';
+  }
+  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLogoLightbox(); });
+
+  // ---- Mobile nav ----
+  document.querySelectorAll('#navlinks a').forEach(a=>{
+    a.addEventListener('click', ()=>document.getElementById('navlinks').classList.remove('open'));
+  });
+
+  // ---- Hero video controls ----
+  (function(){
+    const heroVideo = document.getElementById('heroVideo');
+    const heroMuteBtn = document.getElementById('heroMuteBtn');
+    const heroPlayBtn = document.getElementById('heroPlayBtn');
+    const mainVideo = document.getElementById('mainVideo');
+    heroMuteBtn.addEventListener('click', ()=>{
+      heroVideo.muted = !heroVideo.muted;
+      heroMuteBtn.textContent = heroVideo.muted ? '🔇 Hidupkan bunyi pratonton' : '🔊 Matikan bunyi';
+    });
+    heroPlayBtn.addEventListener('click', ()=>{
+      document.getElementById('video').scrollIntoView({behavior:'smooth'});
+      setTimeout(()=>{ mainVideo.play().catch(()=>{}); }, 500);
+    });
+  })();
+
+  // ---- Scroll reveal ----
+  (function(){
+    const els = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){ entry.target.classList.add('show'); io.unobserve(entry.target); }
+      });
+    }, {threshold:0.12});
+    els.forEach(el=>io.observe(el));
+  })();
+
+  // ---- Vitals count-up ----
+  (function(){
+    const counters = document.querySelectorAll('.count');
+    if(!counters.length) return;
+    const animate = (el)=>{
+      const target = parseFloat(el.getAttribute('data-target'));
+      const dur = 1100;
+      const start = performance.now();
+      function tick(now){
+        const p = Math.min(1, (now-start)/dur);
+        const eased = 1 - Math.pow(1-p, 3);
+        el.textContent = Math.round(target*eased);
+        if(p < 1) requestAnimationFrame(tick);
+        else el.textContent = target;
+      }
+      requestAnimationFrame(tick);
+    };
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){ animate(entry.target); io.unobserve(entry.target); }
+      });
+    }, {threshold:0.5});
+    counters.forEach(c=>io.observe(c));
+  })();
+
+  // ================= HANDWASH GAME =================
+  (function(){
+    const TOTAL = 20;
+    const stepBoundaries = [0,4,8,12,16,20];
+    const stepLabels = [
+      "Basahkan tangan & sapu sabun 🧴",
+      "Gosok tapak & belakang tangan ✋",
+      "Gosok celah-celah jari 🤲",
+      "Gosok ibu jari & pergelangan 👍",
+      "Bilas & lap tangan kering 💧"
+    ];
+    const ring = document.getElementById('ringProgress');
+    const CIRC = 2 * Math.PI * 76;
+    ring.setAttribute('stroke-dasharray', CIRC);
+    const numEl = document.getElementById('washNum');
+    const stepLabelEl = document.getElementById('washStepLabel');
+    const stepsListEl = document.getElementById('washStepsList');
+    const msgEl = document.getElementById('washMsg');
+    const startBtn = document.getElementById('washStart');
+    const resetBtn = document.getElementById('washReset');
+    let elapsed = 0, timer = null, running = false;
+
+    function currentStepIndex(t){
+      for(let i=0;i<stepBoundaries.length-1;i++){
+        if(t >= stepBoundaries[i] && t < stepBoundaries[i+1]) return i;
+      }
+      return stepLabels.length-1;
+    }
+    function render(){
+      const remaining = TOTAL - elapsed;
+      numEl.textContent = remaining;
+      const offset = CIRC * (1 - elapsed/TOTAL);
+      ring.setAttribute('stroke-dashoffset', offset);
+      const idx = currentStepIndex(elapsed);
+      stepLabelEl.textContent = stepLabels[idx];
+      [...stepsListEl.children].forEach((el,i)=>{
+        el.classList.remove('active','done');
+        if(i < idx) el.classList.add('done');
+        else if(i === idx) el.classList.add('active');
+      });
+    }
+    function finish(){
+      running = false;
+      clearInterval(timer);
+      numEl.textContent = "0";
+      stepLabelEl.textContent = "Hebat! Tangan kamu kini bersih! ✨";
+      [...stepsListEl.children].forEach(el=>{el.classList.remove('active'); el.classList.add('done');});
+      msgEl.textContent = "🏆 Juara Kebersihan! Cuba nyanyikan lagu ini setiap kali cuci tangan.";
+      startBtn.textContent = "▶ Mula semula";
+      markChecklistDone('kebersihan');
+    }
+    function start(){
+      if(running) return;
+      running = true; elapsed = 0; msgEl.textContent = "";
+      startBtn.textContent = "⏳ Sedang gosok...";
+      render();
+      timer = setInterval(()=>{
+        elapsed += 1;
+        if(elapsed >= TOTAL){ elapsed = TOTAL; render(); finish(); }
+        else { render(); }
+      }, 1000);
+    }
+    function reset(){
+      running = false; clearInterval(timer); elapsed = 0; msgEl.textContent = "";
+      startBtn.textContent = "▶ Mula cabaran";
+      stepLabelEl.textContent = "Sedia untuk mula? 🧼";
+      numEl.textContent = TOTAL;
+      ring.setAttribute('stroke-dashoffset', CIRC);
+      [...stepsListEl.children].forEach(el=>el.classList.remove('active','done'));
+    }
+    startBtn.addEventListener('click', start);
+    resetBtn.addEventListener('click', reset);
+    reset();
+  })();
+
+  // ================= QUIZ GAME =================
+  (function(){
+    const QUESTIONS = [
+      { q:"Berapa saat sepatutnya kita gosok tangan dengan sabun?", opts:["5 saat","20 saat","1 minit penuh","Tak perlu sabun"], correct:1, note:"Betul! 20 saat cukup untuk bersihkan kuman di tangan." },
+      { q:"Berapa jam tidur yang disyorkan untuk kanak-kanak 6–12 tahun?", opts:["4–5 jam","9–12 jam","15 jam","Tidur tak penting"], correct:1, note:"Betul! Tidur cukup bantu badan & otak berehat serta pulih." },
+      { q:"Berapa minit aktiviti fizikal disyorkan untuk kanak-kanak setiap hari?", opts:["10 minit","30 minit","60 minit","Tak perlu bergerak"], correct:2, note:"Betul! Sekurang-kurangnya 60 minit bergerak setiap hari." },
+      { q:"Bila masa terbaik untuk minum lebih banyak air?", opts:["Selepas bergerak aktif / bersukan","Hanya waktu malam","Tak perlu minum air","Hanya bila sangat haus"], correct:0, note:"Betul! Badan hilang banyak air semasa bergerak aktif." },
+      { q:"Yang manakah contoh pemakanan seimbang?", opts:["Snek manis sahaja","Sayur, buah, protein & bijirin","Air bergula sepanjang hari","Lompat waktu sarapan"], correct:1, note:"Betul! Pinggan sihat ada sayur, buah, protein & bijirin penuh." }
+    ];
+    let qi = 0, score = 0, locked = false;
+    const progEl = document.getElementById('quizProgress');
+    const qEl = document.getElementById('quizQ');
+    const optsEl = document.getElementById('quizOpts');
+    const fbEl = document.getElementById('quizFeedback');
+    const areaEl = document.getElementById('quizArea');
+    const resultEl = document.getElementById('quizResult');
+    const scoreEl = document.getElementById('quizScore');
+    const verdictEl = document.getElementById('quizVerdict');
+    const againBtn = document.getElementById('quizAgain');
+
+    function buildProgress(){
+      progEl.innerHTML = '';
+      QUESTIONS.forEach((_,i)=>{
+        const i_ = document.createElement('i');
+        if(i < qi) i_.classList.add('done');
+        progEl.appendChild(i_);
+      });
+    }
+    function renderQ(){
+      locked = false; fbEl.textContent = ''; buildProgress();
+      const item = QUESTIONS[qi];
+      qEl.textContent = (qi+1) + ". " + item.q;
+      optsEl.innerHTML = '';
+      item.opts.forEach((opt, idx)=>{
+        const b = document.createElement('button');
+        b.className = 'quiz-opt';
+        b.textContent = opt;
+        b.addEventListener('click', ()=>choose(idx, b));
+        optsEl.appendChild(b);
+      });
+    }
+    function choose(idx, btn){
+      if(locked) return;
+      locked = true;
+      const item = QUESTIONS[qi];
+      const allBtns = [...optsEl.children];
+      allBtns.forEach(b=>b.disabled = true);
+      if(idx === item.correct){
+        btn.classList.add('correct'); score++;
+        fbEl.textContent = "✅ " + item.note;
+      } else {
+        btn.classList.add('wrong');
+        allBtns[item.correct].classList.add('correct');
+        fbEl.textContent = "❌ " + item.note;
+      }
+      setTimeout(()=>{
+        qi++;
+        if(qi < QUESTIONS.length){ renderQ(); } else { showResult(); }
+      }, 1300);
+    }
+    function showResult(){
+      areaEl.style.display = 'none';
+      resultEl.style.display = 'block';
+      buildProgress();
+      scoreEl.textContent = score + "/" + QUESTIONS.length;
+      let msg;
+      if(score === QUESTIONS.length) msg = "🏆 Juara Healty Pro MAX! Kamu pakar amalan sihat!";
+      else if(score >= 3) msg = "🌟 Hebat! Sikit lagi jadi pakar kesihatan.";
+      else msg = "💪 Jom tonton video sekali lagi dan cuba kuiz semula!";
+      verdictEl.textContent = msg;
+      if(score >= 3) markChecklistDone('kuiz');
+    }
+    function restart(){
+      qi = 0; score = 0;
+      areaEl.style.display = 'block';
+      resultEl.style.display = 'none';
+      renderQ();
+    }
+    againBtn.addEventListener('click', restart);
+    renderQ();
+  })();
+
+  // ================= DAILY CHECKLIST WIDGET =================
+  const CHECK_KEY = 'hpm_checklist_v1';
+  const CL_ITEMS = [
+    {id:'kebersihan', icon:'🧼', label:'Cuci tangan & gosok gigi'},
+    {id:'pemakanan',  icon:'🥗', label:'Makan sayur & buah'},
+    {id:'aktiviti',   icon:'🏃', label:'Bergerak aktif 60 minit'},
+    {id:'tidur',      icon:'😴', label:'Tidur cukup malam tadi'},
+    {id:'air',        icon:'💧', label:'Minum air secukupnya'}
+  ];
+  let clState = { date:'', items:{} };
+  function todayStr(){ return new Date().toISOString().slice(0,10); }
+  function loadChecklist(){
+    try{
+      const raw = localStorage.getItem(CHECK_KEY);
+      if(raw){
+        const parsed = JSON.parse(raw);
+        if(parsed.date === todayStr()){ clState = parsed; return; }
+      }
+    }catch(e){}
+    clState = { date: todayStr(), items:{} };
+  }
+  function saveChecklist(){ try{ localStorage.setItem(CHECK_KEY, JSON.stringify(clState)); }catch(e){} }
+  function markChecklistDone(id){ clState.items[id] = true; saveChecklist(); renderChecklist(); }
+  function renderChecklist(){
+    const wrap = document.getElementById('clItems');
+    wrap.innerHTML = '';
+    let doneCount = 0;
+    CL_ITEMS.forEach(item=>{
+      const checked = !!clState.items[item.id];
+      if(checked) doneCount++;
+      const label = document.createElement('label');
+      label.className = 'cl-item' + (checked ? ' checked' : '');
+      label.innerHTML = '<input type="checkbox" ' + (checked?'checked':'') + ' data-id="'+item.id+'"><span>'+item.icon+' '+item.label+'</span>';
+      wrap.appendChild(label);
+    });
+    document.getElementById('clProgressFill').style.width = (doneCount/CL_ITEMS.length*100) + '%';
+    document.getElementById('fabDot').classList.toggle('show', doneCount > 0 && doneCount < CL_ITEMS.length);
+    wrap.querySelectorAll('input[type=checkbox]').forEach(cb=>{
+      cb.addEventListener('change', (e)=>{
+        const id = e.target.getAttribute('data-id');
+        clState.items[id] = e.target.checked;
+        saveChecklist();
+        renderChecklist();
+      });
+    });
+  }
+  (function(){
+    loadChecklist();
+    renderChecklist();
+    const fab = document.getElementById('fabBtn');
+    const panel = document.getElementById('checklistPanel');
+    const closeBtn = document.getElementById('clClose');
+    fab.addEventListener('click', ()=>panel.classList.toggle('open'));
+    closeBtn.addEventListener('click', ()=>panel.classList.remove('open'));
+    document.addEventListener('click', (e)=>{
+      if(!panel.contains(e.target) && !fab.contains(e.target)) panel.classList.remove('open');
+    });
+  })();
+</script>
+</body>
+</html>
